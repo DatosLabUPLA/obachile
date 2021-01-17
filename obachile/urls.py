@@ -8,7 +8,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'^.*\.html', views.pages, name='pages'),
 
-    path('', views.index, name='home'),
+    #path('', views.index, name='home'),
    
     url('chart/', views.charts, name='chart'),
     path('', views.charts, name='home'),
