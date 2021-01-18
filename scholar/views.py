@@ -99,12 +99,12 @@ def chartsperfiles(request):
         
     })
 def table(request):
-    tabla1 = Autor.objects.all()[:15]
-    tabla2 = AutorPaper.objects.order_by('-citado_por')[:15]
+    tabla1 = Autor.objects.all()[:150]
+    tabla2 = AutorPaper.objects.order_by('-citado_por')[:150]
     return render(request, 'tables.html', {'tabla1' : tabla1, 'tabla2' : tabla2})
 def table2(request):
-    tabla1 = Autor.objects.order_by('-todas_citas')[:15]
-    tabla2 = AutorPaper.objects.order_by('-citado_por')[:15]
+    tabla1 = Autor.objects.order_by('-todas_citas')[:150]
+    tabla2 = AutorPaper.objects.order_by('-citado_por')[:150]
     return render(request, 'tables2.html', {'tabla1' : tabla1, 'tabla2' : tabla2})
 def perfil(request, id):
     perfils = Autor.objects.get(id=id)
