@@ -59,10 +59,10 @@ def charts(request):
     for autor in query:
         labe.append(autor.año)
         datas.append(autor.citado_por)
-    quer = AutorPaper.objects.all()[:15]
+    quer = AutorPaper.objects.order_by('citado_por')[:15]
     for autor in query:
         lab.append(autor.revista)
-        da.append(autor.citado_por)
+        da.append(autor.todas_citas)
 
     querys = AutorPaper.objects.all()[:15]
     for autor in querys:
@@ -99,12 +99,12 @@ def chartsperfiles(request):
         
     })
 def table(request):
-    tabla1 = Autor.objects.order_by('-todas_citas')[:10]
-    tabla2 = AutorPaper.objects.order_by('-citado_por')[:10]
+    tabla1 = Autor.objects.all()[:15]
+    tabla2 = AutorPaper.objects.order_by('-citado_por')[:15]
     return render(request, 'tables.html', {'tabla1' : tabla1, 'tabla2' : tabla2})
 def table2(request):
-    tabla1 = Autor.objects.order_by('-todas_citas')[:10]
-    tabla2 = AutorPaper.objects.order_by('-citado_por')[:10]
+    tabla1 = Autor.objects.order_by('-todas_citas')[:15]
+    tabla2 = AutorPaper.objects.order_by('-citado_por')[:15]
     return render(request, 'tables2.html', {'tabla1' : tabla1, 'tabla2' : tabla2})
 def perfil(request, id):
     perfils = Autor.objects.get(id=id)
